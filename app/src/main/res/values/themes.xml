@@ -1,0 +1,27 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MicroPago_BrianViana" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.MicroPago_BrianViana" parent="Base.Theme.MicroPago_BrianViana" />
+
+    <style name="Title_Rq">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TitleMainRq" parent="Title_Rq">
+        <item name="android:fontFamily">sans-serif-black</item>
+    </style>
+
+    <style name="FullScreenDialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+</resources>
