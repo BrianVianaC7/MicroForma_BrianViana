@@ -16,6 +16,20 @@
         <item name="android:fontFamily">sans-serif-black</item>
     </style>
 
+    <style name="Title">
+        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="Body" parent="Title">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TitleFaDialgo" parent="Title">
+        <item name="android:textColor">@color/red_light</item>
+    </style>
+
+
     <style name="FullScreenDialog">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowContentOverlay">@null</item>

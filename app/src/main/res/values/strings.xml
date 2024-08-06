@@ -15,6 +15,14 @@
     <string name="olvide_contrasena">Olvide mi contraseña</string>
     <string name="clients">Clients</string>
 
+    <!--    Dialogs-->
+    <string name="Error">Error</string>
+    <string name="ErrorDialog">Ocurrio un Problema</string>
+    <string name="Exito">Éxito</string>
+    <string name="Aceptar">Aceptar</string>
+    <string name="crear">Crear</string>
+    <string name="editar">Editar</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="maps">Location</string>

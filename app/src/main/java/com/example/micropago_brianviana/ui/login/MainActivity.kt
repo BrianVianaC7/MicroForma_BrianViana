@@ -31,7 +31,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
-        initSignIn()
+        //initSignIn()
+        binding.btnLogin.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 //"username": "android",
