@@ -9,4 +9,7 @@ import javax.inject.Inject
 class ClientViewModel @Inject constructor(
     private val getAllUseCase: GetAllUseCase
 ) : ViewModel() {
+
+
+
 }

@@ -1,32 +1,42 @@
 package com.example.micropago_brianviana.ui.home.maps
 
 import android.Manifest
-import android.app.Activity
 import android.content.pm.PackageManager
+import android.location.Location
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.TranslateAnimation
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.DialogFragment.STYLE_NO_TITLE
-import androidx.fragment.app.FragmentManager
 import com.example.micropago_brianviana.R
 import com.example.micropago_brianviana.databinding.FragmentMapsBinding
-import com.example.micropago_brianviana.ui.home.HomeActivity
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MapsFragment : Fragment() {
+class MapsFragment : Fragment(), GoogleMap.OnMyLocationClickListener {
 
     private var _binding: FragmentMapsBinding? = null
     private val binding get() = _binding!!
     private lateinit var map: GoogleMap
+    private var currentMarker: Marker? = null
+
+    //Animation
+    private val moveLeft = TranslateAnimation(800f, 0f, 0f, 0f).apply {
+        duration = 1500
+    }
+    private val moveRight = TranslateAnimation(0f, 800f, 0f, 0f).apply {
+        duration = 1500
+    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,12 +54,13 @@ class MapsFragment : Fragment() {
         mapFragment.getMapAsync { googleMap ->
             map = googleMap
             enableLocation()
+            map.setOnMyLocationClickListener(this)
         }
     }
 
     private fun isLocationPermissionGranted() = ContextCompat.checkSelfPermission(
         requireContext(),
-        android.Manifest.permission.ACCESS_FINE_LOCATION
+        Manifest.permission.ACCESS_FINE_LOCATION
     ) == PackageManager.PERMISSION_GRANTED
 
     private fun enableLocation() {
@@ -87,9 +98,33 @@ class MapsFragment : Fragment() {
         }
     }
 
+    private fun createMarker(latLng: LatLng): Marker? {
+        currentMarker?.isVisible = false
+        val markerOptions = MarkerOptions().position(latLng).title("Mi ubicación")
+        val marker = map.addMarker(markerOptions)
+        if (marker != null) {
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.position, 18f), 2000, null)
+            currentMarker = marker
+        }
+        currentMarker?.isVisible = true
+        return marker
+    }
 
-    private fun createMarker() {
-        TODO("Not yet implemented")
+
+    override fun onMyLocationClick(p0: Location) {
+        val latLng = LatLng(p0.latitude, p0.longitude)
+        showAnimation(latLng.toString())
+        createMarker(latLng)
+    }
+
+    private fun showAnimation(latLng: String) {
+        binding.clLatlng.root.startAnimation(moveLeft)
+        binding.clLatlng.root.visibility = View.VISIBLE
+        binding.clLatlng.titlePopup.text = latLng
+        binding.clLatlng.closeSnack.setOnClickListener {
+            binding.clLatlng.root.startAnimation(moveRight)
+            binding.clLatlng.root.visibility = View.GONE
+        }
     }
 
     override fun onResume() {
@@ -116,4 +151,6 @@ class MapsFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
+
+
 }
