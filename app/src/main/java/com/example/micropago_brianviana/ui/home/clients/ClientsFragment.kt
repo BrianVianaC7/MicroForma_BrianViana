@@ -5,17 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.activity.viewModels
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
-import com.example.micropago_brianviana.R
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.micropago_brianviana.databinding.FragmentClientsBinding
-import com.example.micropago_brianviana.databinding.FragmentMapsBinding
+import com.example.micropago_brianviana.ui.home.clients.adapter.HomeAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ClientsFragment : Fragment() {
 
+    private lateinit var clientAdapter: HomeAdapter
     private val clientViewModel: ClientViewModel by viewModels()
     private var _binding: FragmentClientsBinding? = null
     private val binding get() = _binding!!
@@ -26,8 +30,38 @@ class ClientsFragment : Fragment() {
     }
 
     private fun initUI() {
-        Toast.makeText(context, "Hola", Toast.LENGTH_SHORT).show()
+        initUIState()
+        initRecyclerView()
+        initFilter()
     }
+
+    private fun initUIState() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                clientViewModel.data.collect {
+                    clientAdapter.updateList(it)
+                }
+            }
+        }
+    }
+
+    private fun initRecyclerView() {
+        val clientAdapter = HomeAdapter()
+        binding.rvClients.apply {
+            layoutManager = GridLayoutManager(context, 2)
+            adapter = clientAdapter
+        }
+    }
+
+    private fun initFilter() {
+        binding.etFilterEt.addTextChangedListener { clientFilter ->
+            val filteredList = clientViewModel.data.value.filter { client ->
+                client.telefono!!.lowercase().contains(clientFilter.toString().trim().lowercase())
+            }
+            clientAdapter.updateList(filteredList)
+        }
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

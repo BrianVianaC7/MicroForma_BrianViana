@@ -17,28 +17,7 @@ class LoginViewModel @Inject constructor(
     private val getAllUseCase: GetAllUseCase
 ) : ViewModel() {
 
-    private val _data = MutableStateFlow<List<HomeDataModel>>(emptyList())
-    val data: StateFlow<List<HomeDataModel>> get() = _data
-
-    private val _isLoading = MutableStateFlow(false)
-    val isLoading: StateFlow<Boolean> get() = _isLoading
-
     suspend fun loginUser(request: LoginUserRequest): LoginDataModel {
         return getAllUseCase.loginUser(request)
-    }
-
-    fun getData() {
-        try {
-            _isLoading.value = true
-            viewModelScope.launch {
-                val dataFromApi = getAllUseCase.getData()
-                _data.value = dataFromApi
-            }
-        } catch (e: Exception) {
-            _data.value = emptyList()
-            _isLoading.value = false
-        } finally {
-            _isLoading.value = false
-        }
     }
 }
