@@ -26,5 +26,17 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="maps">Location</string>
+    <string name="buscar">Buscar</string>
+    <string name="telefono">Teléfono</string>
+    <string name="direcci_n">Dirección:</string>
+    <string name="tel_fono">Teléfono:</string>
+    <string name="estatus">Estatus:</string>
+    <string name="fecha_de_cierre">Fecha de cierre:</string>
+    <string name="fecha_de_alta">Fecha de alta:</string>
+    <string name="descripci_n_corta">Descripción Corta:</string>
+    <string name="servicio">Servicio:</string>
+    <string name="cliente">Cliente:</string>
+    <string name="no_de_afiliaci_n">No. de Afiliación:</string>
+    <string name="negocio">Negocio</string>
 
 </resources>

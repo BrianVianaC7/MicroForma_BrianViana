@@ -13,7 +13,7 @@ class HomeAdapter(
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateList(usersList: List<HomeDataModel>) {
-        this.clientList = usersList
+        clientList = usersList
         notifyDataSetChanged()
     }
 

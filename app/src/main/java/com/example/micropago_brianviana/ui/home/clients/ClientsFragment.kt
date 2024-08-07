@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -27,12 +28,14 @@ class ClientsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUI()
+        clientViewModel.getData()
     }
 
     private fun initUI() {
         initUIState()
         initRecyclerView()
         initFilter()
+        initLoader()
     }
 
     private fun initUIState() {
@@ -45,10 +48,20 @@ class ClientsFragment : Fragment() {
         }
     }
 
+    private fun initLoader() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                clientViewModel.isLoading.collect { loading ->
+                    binding.pbar.isVisible = loading
+                }
+            }
+        }
+    }
+
     private fun initRecyclerView() {
-        val clientAdapter = HomeAdapter()
+        clientAdapter = HomeAdapter(emptyList())
         binding.rvClients.apply {
-            layoutManager = GridLayoutManager(context, 2)
+            layoutManager = GridLayoutManager(context, 1)
             adapter = clientAdapter
         }
     }
