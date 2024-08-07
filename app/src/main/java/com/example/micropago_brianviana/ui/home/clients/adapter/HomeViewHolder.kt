@@ -29,7 +29,7 @@ class HomeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         }
     }
 
-    private fun setTextOrDefault(view: TextView, text: String?, defaultText: String = "__________________________________") {
+    private fun setTextOrDefault(view: TextView, text: String?, defaultText: String = "______________") {
         view.text = if (!text.isNullOrEmpty()) text else defaultText
     }
 }
