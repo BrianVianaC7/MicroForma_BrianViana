@@ -27,3 +27,15 @@ Esta aplicación permite iniciar sesión, ver una lista de clientes con caracter
 - Diseño organizado y funcionalidad que cumple con los requisitos especificados
 
 ---
+
+**Views**
+
+---
+Video con la funcionalidad de la APP
+
+https://github.com/user-attachments/assets/1109e2ec-2cb2-4394-b8b2-1588b6abed11
+
+---
+
+
+
