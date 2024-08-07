@@ -18,16 +18,16 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:layout_width="180dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/no_de_afiliaci_n"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvNoAfiliacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="16sp"
             tools:text="5611637" />
     </LinearLayout>
 
@@ -52,16 +52,16 @@
         app:layout_constraintTop_toBottomOf="@id/linearNoAfiliacion">
 
         <TextView
-            android:layout_width="180dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/cliente"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvCliente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="16sp"
             tools:text="TPV-1 TPV GETNET SANTANDER SERVICIOS" />
     </LinearLayout>
 
@@ -86,16 +86,16 @@
         app:layout_constraintTop_toBottomOf="@id/linearCliente">
 
         <TextView
-            android:layout_width="180dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/servicio"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvServicio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="16sp"
             tools:text="CAMBIO DE SIM A MOVISTAR" />
     </LinearLayout>
 
@@ -120,16 +120,16 @@
         app:layout_constraintTop_toBottomOf="@id/linearServicio">
 
         <TextView
-            android:layout_width="180dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/descripci_n_corta"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvDescripcionCorta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="16sp"
             tools:text="CAMBIO DE SIM DE TELCEL A MOVISTAR" />
     </LinearLayout>
 
@@ -154,17 +154,17 @@
         app:layout_constraintTop_toBottomOf="@id/linearDescripcionCorta">
 
         <TextView
-            android:layout_width="180dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/fecha_de_alta"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvFechaAlta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/holo_green_dark"
-            android:textSize="18sp"
+            android:textSize="16sp"
             tools:text="30/10/2023 09:52:00" />
     </LinearLayout>
 
@@ -189,17 +189,17 @@
         app:layout_constraintTop_toBottomOf="@id/linearFechaAlta">
 
         <TextView
-            android:layout_width="180dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/fecha_de_cierre"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvFechaCierre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/holo_red_light"
-            android:textSize="18sp"
+            android:textSize="16sp"
             tools:text="22/05/2024 18:01:00" />
     </LinearLayout>
 
@@ -224,10 +224,10 @@
         app:layout_constraintTop_toBottomOf="@id/linearFechaCierre">
 
         <TextView
-            android:layout_width="180dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/direcci_n"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -287,17 +287,17 @@
         app:layout_constraintTop_toBottomOf="@id/linearDireccion">
 
         <TextView
-            android:layout_width="180dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/tel_fono"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvTelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/holo_blue_light"
-            android:textSize="18sp"
+            android:textSize="16sp"
             tools:text="4499298425" />
     </LinearLayout>
 
@@ -322,17 +322,17 @@
         app:layout_constraintTop_toBottomOf="@id/linearTelefono">
 
         <TextView
-            android:layout_width="180dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/negocio"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvNegocio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
-            android:textSize="18sp"
+            android:textSize="16sp"
             tools:text="TOYAMA MOTOS" />
     </LinearLayout>
 
@@ -348,17 +348,19 @@
 
     <View
         android:layout_width="1dp"
-        android:layout_height="547dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:background="@color/grayDark"
+        app:layout_constraintBottom_toTopOf="@id/view_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:layout_width="1dp"
-        android:layout_height="547dp"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:background="@color/grayDark"
+        app:layout_constraintBottom_toTopOf="@id/view_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -33,9 +33,10 @@ class ClientsFragment : Fragment() {
 
     private fun initUI() {
         initUIState()
+        initLoader()
+        binding.pbar.isVisible = true
         initRecyclerView()
         initFilter()
-        initLoader()
     }
 
     private fun initUIState() {
