@@ -22,19 +22,16 @@ class ClientViewModel @Inject constructor(
     val isLoading: StateFlow<Boolean> get() = _isLoading
 
     fun getData() {
-        try {
-            _isLoading.value = true
-            viewModelScope.launch {
+        viewModelScope.launch {
+            try {
+                _isLoading.value = true
                 val dataFromApi = getAllUseCase.getData()
                 _data.value = dataFromApi
+            } catch (e: Exception) {
+                _data.value = emptyList()
+            } finally {
+                _isLoading.value = false
             }
-        } catch (e: Exception) {
-            _data.value = emptyList()
-            _isLoading.value = false
-        } finally {
-            _isLoading.value = false
         }
     }
-
-
 }

@@ -17,7 +17,15 @@ class LoginViewModel @Inject constructor(
     private val getAllUseCase: GetAllUseCase
 ) : ViewModel() {
 
+    private val _isLoading = MutableStateFlow(false)
+    val isLoading: StateFlow<Boolean> get() = _isLoading
+
     suspend fun loginUser(request: LoginUserRequest): LoginDataModel {
-        return getAllUseCase.loginUser(request)
+        _isLoading.value = true
+        return try {
+            getAllUseCase.loginUser(request)
+        } finally {
+            _isLoading.value = false
+        }
     }
 }

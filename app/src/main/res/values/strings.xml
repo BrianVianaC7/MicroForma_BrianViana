@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MicroPago_BrianViana</string>
+    <string name="app_name">MicroFormas_BrianViana</string>
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyA6wXno--OY9mdnJeOJNpkD88LaQY325Mg</string>
     <string name="login">LOGIN</string>
     <string name="register">REGISTER</string>
@@ -38,5 +38,7 @@
     <string name="cliente">Cliente:</string>
     <string name="no_de_afiliaci_n">No. de Afiliación:</string>
     <string name="negocio">Negocio</string>
+    <string name="microapp">MicroApp</string>
+    <string name="username">Username</string>
 
 </resources>

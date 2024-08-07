@@ -7,7 +7,10 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.micropago_brianviana.R
 import com.example.micropago_brianviana.data.network.request.LoginUserRequest
 import com.example.micropago_brianviana.databinding.ActivityMainBinding
@@ -28,14 +31,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initUI()
+        initLoader()
     }
 
     private fun initUI() {
-        //initSignIn()
-        binding.btnLogin.setOnClickListener {
+        initSignIn()
+        /*binding.btnLogin.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
-        }
+        }*/
     }
 
 //"username": "android",
@@ -78,4 +82,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun initLoader() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                loginViewModel.isLoading.collect { loading ->
+                    binding.pbar.isVisible = loading
+                }
+            }
+        }
+    }
+
 }
